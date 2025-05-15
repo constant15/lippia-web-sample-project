@@ -9,7 +9,6 @@ Feature: Shop
     Then Ahora el usuario puede ver solo los productos populares
 
 
-  @Ignore
     @Smoke
   Scenario: Shop-Product Categories Funcionality
     Given estoy en la URL http://practice.automationtesting.in
@@ -17,7 +16,6 @@ Feature: Shop
     And Hago click en cualquiera de los enlaces que se encuentran en 'Products Categories'
     Then La pagina me muestra los productos de esa categoria en particular
 
-  @Ignore
   @Smoke
   Scenario: Shop-Sale Functionality
     Given estoy en la URL http://practice.automationtesting.in

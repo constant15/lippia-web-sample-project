@@ -1,8 +1,7 @@
-@Ignore
 @Login
 
 Feature: Login
-  @Ignore
+
   @Smoke
   Scenario: Login con ingreso de datos validos
     Given estoy en la URL http://practice.automationtesting.in

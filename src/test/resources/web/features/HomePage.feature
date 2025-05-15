@@ -1,4 +1,4 @@
-@Ignore
+
 @HomePage
 Feature: Home Page
 
