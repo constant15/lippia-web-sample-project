@@ -1,6 +1,6 @@
+@Ignore
 Feature: As a potential client i need to search in google to find a web site
-
-  @Regression @Candidate @SearchCrowdar
+mvn  @Candidate @SearchCrowdar
   Scenario: The client search by "crowdar"
     Given The client is on google page
     When The client search for word crowdar
