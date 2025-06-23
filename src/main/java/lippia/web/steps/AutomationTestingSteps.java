@@ -104,5 +104,23 @@ public class AutomationTestingSteps extends PageSteps {
     public void verificacionFallaRegistro(int motivo) {
         AutomationTestingHomeService.tipoFallaRegistracion(motivo);
     }
+
+
+    @And("Hago click en 'Detalles de la cuenta'$")
+    public void clickDetallesCuenta() {
+        AutomationTestingHomeService.clickDetailsAccount();
+    }
+
+    @Then("Se verifica que el usuario visualiza los detalles de su cuenta$")
+    public void verificacionDetallesCuenta() {
+        AutomationTestingHomeService.seccionDetallesCuenta();
+    }
+
+
+    @Then("Al hacer clic en 'Cerrar sesión', el usuario sale correctamente del sitio")
+    public void verificacionCierreSesion() {
+        AutomationTestingHomeService.salirCuenta();
+        AutomationTestingHomeService.CheckLoginPage();
+    }
 }
 

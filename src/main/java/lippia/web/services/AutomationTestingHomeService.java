@@ -105,6 +105,19 @@ public class AutomationTestingHomeService extends ActionManager {
         }
     }
 
+    public static void clickDetailsAccount(){
+        click(AutomationTestingConstants.ACCOUNT_DETAILS_XPATH);
+    }
+
+    public static void seccionDetallesCuenta(){
+        boolean seccionDetalles = WebActionManager.isPresent(AutomationTestingConstants.FORM_DETAILS_XPATH);
+        Assert.assertTrue("La sección de detalles de cuenta no está visible", seccionDetalles);
+    }
+
+    public static void salirCuenta(){
+        click(AutomationTestingConstants.LOGIN_OUT_XPATH);
+
+    }
 }
 
 

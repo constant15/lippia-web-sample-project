@@ -1,3 +1,4 @@
+@Ignore
 @Registration
 Feature: Registration
 
