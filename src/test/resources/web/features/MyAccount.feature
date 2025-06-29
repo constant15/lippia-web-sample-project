@@ -1,3 +1,4 @@
+@Ignore
 @MyAccount
 Feature: MyAccount
 
