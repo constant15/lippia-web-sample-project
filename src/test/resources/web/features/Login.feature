@@ -1,4 +1,4 @@
-@Ignore
+
 @Login
 Feature: Login
 
