@@ -2,10 +2,6 @@ package lippia.web.constants;
 
 public class AutomationTestingConstants {
 
-    public static final String INPUT_SEARCH_XPATH = "xpath://textarea[@class='gLFyf']";
-    public static final String SEARCH_BUTTON_NAME = "name:btnK";
-    public static final String STATS_ID = "id:rcnt";
-
     //Login
     public static final String MY_ACCOUNT_BUTTON_ID = "id:menu-item-50";
     public static final String INPUT_EMAIL_ID = "id:username";
@@ -65,8 +61,7 @@ public class AutomationTestingConstants {
 
     public static final String ITEM_PRICE_XPATH = "xpath://*[@id=\"order_review\"]/table/tfoot/tr[1]/td/span";
     public static final String FORM_CHECKOUT_SECOND_OPTION_XPATH = "xpath://*[@id=\"select2-results-1\"]/li[2]";
-    public static final String PRUEBA = "xpath://*[@id=\"footer\"]/div[2]/div/div/div[3]";
-    public static final String ADD_IFRAME = "id:aswift_6";
-    public static final String CLOSE_AD = "xpath://*[@id='dismiss-button']";
+    public static final String ITEM_TAX_XPATH = "xpath://*[@id=\"order_review\"]/table/tfoot/tr[2]/td/span";
+
 }
 

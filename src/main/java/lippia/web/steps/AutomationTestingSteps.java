@@ -223,14 +223,17 @@ public class AutomationTestingSteps extends PageSteps {
     }
 
 
-    @And("Ingreso en el detalle de facturacion en la caja de texto 'Pais' a India")
-    public void ingresoIndia() {
-        AutomationTestingHomeService.indiaBoxCountry();
+    @And("^Ingreso un (.*) en el detalle de facturacion en la caja de texto 'Pais'$")
+    public void ingresoPais(String pais) {
+        AutomationTestingHomeService.seleccionPais(pais);
     }
 
-    @Then("Se verifica que el pedido tendra una tasa impositiva del 2%")
-    public void porcentajeMinFacturacion() {
-        AutomationTestingHomeService.verifyPorcMinimo();
+    @Then("^Se verifica que el pedido tendra una tasa impositiva del 2% si ese (.*) es India o 5% si es otro pais$")
+    public void verificacionTax(String verifPais) {
+        AutomationTestingHomeService.assertPorTax(verifPais);
     }
+
+
+
 }
 

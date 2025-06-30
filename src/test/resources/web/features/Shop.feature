@@ -1,4 +1,3 @@
-
 @Shop
 Feature: Shop
   @Ignore
@@ -19,7 +18,7 @@ Feature: Shop
 
 
   @Smoke
-  Scenario: Tienda-Añadir al carrito-Ver carrito-Funcionalidad de impuestos
+  Scenario Outline: Tienda-Añadir al carrito-Ver carrito-Funcionalidad de impuestos
     Given Estoy en la URL http://practice.automationtesting.in
     When Hago click en el menu 'Comercio'
     And Hago click en el botón 'Agregar al carrito' del libro
@@ -27,11 +26,12 @@ Feature: Shop
     When Hago click en el enlace 'Items'
     Then Se verifica el subtotal y total justo encima del botón 'Pasar por la caja'
     When Hago click en el boton 'Pasar por la caja'
-    And Ingreso en el detalle de facturacion en la caja de texto 'Pais' a India
-    Then Se verifica que el pedido tendra una tasa impositiva del 2%
-    #When Ingreso en el detalle de facturacion en la caja de texto 'Pais' a un pais extranjero a India
-    #Then Se verifica que en el pedido tendra una tasa impositiva del 5%
+    And Ingreso un <Pais> en el detalle de facturacion en la caja de texto 'Pais'
+    Then Se verifica que el pedido tendra una tasa impositiva del 2% si ese <Pais> es India o 5% si es otro pais
 
-
+    Examples:
+      |Pais      |
+      |India     |
+      |Argentina |
 
 

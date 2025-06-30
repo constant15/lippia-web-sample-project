@@ -2,26 +2,15 @@ package lippia.web.services;
 
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
-import com.crowdar.driver.DriverManager;
-import cucumber.api.java.en_old.Ac;
-import io.github.sridharbandi.driver.DriverContext;
-import lippia.web.constants.GoogleConstants;
-import com.crowdar.core.PropertyManager;
-import com.crowdar.core.actions.ActionManager;
 import com.crowdar.core.actions.WebActionManager;
-import io.cucumber.java8.Ca;
+import com.crowdar.driver.DriverManager;
 import junit.framework.Assert;
 import lippia.web.constants.AutomationTestingConstants;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.sql.DriverAction;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import static com.crowdar.core.actions.WebActionManager.navigateTo;
-import static java.sql.DriverManager.getDriver;
 
 public class AutomationTestingHomeService extends ActionManager {
 
@@ -225,23 +214,80 @@ public class AutomationTestingHomeService extends ActionManager {
     }
 
     public static void clickAgregarLibroDesdeShop(){
+        scrollPage();
         click(AutomationTestingConstants.BOOK_BUTTON_CART);
     }
 
 
-    public static void indiaBoxCountry(){
+    public static void scrollPage(){
+        WebElement boton = DriverManager.getDriverInstance().findElement((By.xpath("//*[@id=\"footer\"]/div[2]/div/div/div[3]")));
+        JavascriptExecutor js = DriverManager.getDriverInstance();
+        js.executeScript("arguments[0].scrollIntoView(true);", boton);
+        boton.click();
+    }
+
+    public static void seleccionPais(String pais){
         click(AutomationTestingConstants.FORM_CHECKOUT_COUNTRY_LIST_ID);
-        setInput(AutomationTestingConstants.FORM_INPUT_COUNTRY_ID, "India");
-        click(AutomationTestingConstants.FORM_CHECKOUT_SECOND_OPTION_XPATH);
+        setInput(AutomationTestingConstants.FORM_INPUT_COUNTRY_ID, pais);
+        if (Objects.equals(pais, "India")){
+            click(AutomationTestingConstants.FORM_CHECKOUT_SECOND_OPTION_XPATH);
+        } else if (Objects.equals(pais, "Argentina")) {
+            click(AutomationTestingConstants.FORM_CHECKOUT_FIRST_OPTION_XPATH);
+        }
     }
 
-    public static void verifyPorcMinimo(){
-        String valor = getText(AutomationTestingConstants.ITEM_PRICE_XPATH);
-        int valor2 = Integer.parseInt(valor);
-        System.out.println("El valor parcial es: "+valor2);
+    public static boolean calculoTaxIndia(){
+        WebElement valorLibro = WebActionManager.getElement(AutomationTestingConstants.ITEM_PRICE_XPATH);
+        String contenidoValor = valorLibro.getText().replace("₹", "");
+        float nuevoContenidoValorLibro = (float) (Float.parseFloat(contenidoValor) * 0.02);
+
+        WebElement valorTax = WebActionManager.getElement(AutomationTestingConstants.ITEM_TAX_XPATH);
+        String contenidoValorTax = valorTax.getText().replace("₹", "");
+        float nuevoValorTax = (Float.parseFloat(contenidoValorTax));
+
+
+        return nuevoContenidoValorLibro == nuevoValorTax;
+
     }
 
+    public static void assertTaxIndia(){
+        if(calculoTaxIndia()){
+            Assert.assertTrue("El valor del impuesto en India no es del 2%.", calculoTaxIndia());
+        }
+    }
+
+
+
+
+    public static boolean calculoTaxOtrosPaises(){
+        WebElement valorLibro = WebActionManager.getElement(AutomationTestingConstants.ITEM_PRICE_XPATH);
+        String contenidoValor = valorLibro.getText().replace("₹", "");
+        float nuevoContenidoValorLibro = (float) (Float.parseFloat(contenidoValor) * 0.05);
+
+        WebElement valorTax = WebActionManager.getElement(AutomationTestingConstants.ITEM_TAX_XPATH);
+        String contenidoValorTax = valorTax.getText().replace("₹", "");
+        float nuevoValorTax = (Float.parseFloat(contenidoValorTax));
+
+
+        return nuevoContenidoValorLibro == nuevoValorTax;
+
+    }
+
+    public static void assertOtroPais(){
+        if (calculoTaxOtrosPaises()){
+            Assert.assertFalse("El valor del impuesto en un pais extranjero a India no es del 5%.", calculoTaxOtrosPaises());
+        }
+    }
+
+    public static void assertPorTax(String verifPais){
+        if (Objects.equals(verifPais, "India")){
+            assertTaxIndia();
+        } else if (Objects.equals(verifPais, "Argentina")) {
+            assertOtroPais();
+        }
+    }
 
 }
+
 
 
