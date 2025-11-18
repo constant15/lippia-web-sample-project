@@ -2,7 +2,7 @@
 
 Feature: Login
 
-
+@Smoke
   Scenario: Login con ingreso de datos validos
     Given estoy en la URL 'https://www.saucedemo.com'
     When ingreso el usuario standard_user en la caja de texto 'Username'

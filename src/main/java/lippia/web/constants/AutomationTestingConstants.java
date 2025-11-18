@@ -2,28 +2,6 @@ package lippia.web.constants;
 
 public class AutomationTestingConstants {
 
-    public static final String INPUT_SEARCH_XPATH = "xpath://textarea[@class='gLFyf']";
-    public static final String SEARCH_BUTTON_NAME = "name:btnK";
-    public static final String STATS_ID = "id:rcnt";
-
-    //ConstantsHomePage
-    public static final String SHOP_BUTTON_ID = "id:menu-item-40";
-
-    public static final String HOME_BUTTON_XPATH = "xpath://*[@id=\"header\"]/div[1]";
-
-    public static final String NEXT_BUTTON_CARROUSEL_XPATH = "xpath://*[@id=\"n2-ss-6-arrow-next\"]";
-
-    public static final String PRODUCT_XPATH = "xpath://*[@id=\"text-22-sub_row_1-0-2-0-0\"]/div/ul/li";
-
-    public static final String DESCRIPTION_BUTTON_XPATH = "xpath://*[@id=\"product-160\"]/div[3]/ul/li[1]";
-
-    public static final String PRODUCTS_CARROUSEL_XPATH = "xpath://*[@id='n2-ss-6']/div[1]/div/div/div";
-
-    public static final String PRODUCTS_ARRIVALS_XPATH = "xpath://*[@id=\"themify_builder_content-22\"]/div[2]/div/div/div/div/div[2]/div";
-
-    public static final String DESCRIPTION_CONTENT_ID = "id:tab-description";
-
-
 
     //ConstantsLogin
 
@@ -34,15 +12,24 @@ public class AutomationTestingConstants {
     public static final String CART_BUTTON_ID = "id:shopping_cart_container";
     public static final String ERROR_MESSAGE_XPATH = "xpath://*[@id=\"login_button_container\"]/div/form/div[3]";
 
+    public static final String BUTTON_ADDTOCART_PRODUCT_ID = "id:add-to-cart-sauce-labs-backpack";
+    public static final String BUTTON_CART_ENABLED_XPATH = "xpath://*[@id=\"shopping_cart_container\"]/a/span";
+    public static final String BUTTON_REMOVE_PRODUCT_CART_ID = "id:remove-sauce-labs-backpack";
 
-    //ConstantsShop
+    public static final String BUTTON_ADDCART_PRODUCT2_ID = "id:add-to-cart-sauce-labs-bike-light";
 
+    public static final String BUTTON_CHECKOUT_ID = "id:checkout";
 
-    public static final String SORTING_BUTTON_XPATH = "xpath://*[@id=\"content\"]/form/select/option[2]";
+    public static final String BUTTON_CART_CONTINUE_ID = "id:continue";
 
-    public static final String LINK_PRODUCT_XPATH = "xpath://*[@id=\"woocommerce_product_categories-2\"]/ul/li[1]/a";
+    public static final String FIRSTNAME_BOX_ID = "id:first-name";
+    public static final String LASTNAME_BOX_ID = "id:last-name";
+    public static final String CP_BOX_ID = "id:postal-code";
+    public static final String CHECKOUT_CONTAINER_XPATH = "xpath://*[@id=\"checkout_summary_container\"]/div/div[2]";
+    public static final String FINISH_BUTTON_ID = "id:finish";
 
-    public static final String SALE_PRODUCT_XPATH = "xpath://*[@id=\"content\"]/ul/li[8]/a[1]";
+    public static final String BUY_CONTAINER_ID = "id:checkout_complete_container";
+
 }
 
 
